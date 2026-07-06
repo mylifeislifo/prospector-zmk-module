@@ -26,7 +26,8 @@ static void set_battery_bar_value(lv_obj_t *widget_obj, struct battery_update_st
         return;
     }
 
-    lv_obj_t *info_container = lv_obj_get_child(widget_obj, state.source);
+    uint8_t display_pos = (ZMK_SPLIT_BLE_PERIPHERAL_COUNT == 2) ? (1 - state.source) : state.source;
+    lv_obj_t *info_container = lv_obj_get_child(widget_obj, display_pos);
     if (!info_container) {
         return;
     }
@@ -58,7 +59,8 @@ static void set_battery_bar_connected(lv_obj_t *widget_obj, struct connection_up
         return;
     }
 
-    lv_obj_t *info_container = lv_obj_get_child(widget_obj, state.source);
+    uint8_t display_pos = (ZMK_SPLIT_BLE_PERIPHERAL_COUNT == 2) ? (1 - state.source) : state.source;
+    lv_obj_t *info_container = lv_obj_get_child(widget_obj, display_pos);
     if (!info_container) {
         return;
     }
